@@ -1,0 +1,4 @@
+set term pngcairo
+set xlabel "Cache size (items)"
+set style data linespoints
+
