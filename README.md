@@ -1,2 +1,4 @@
 # ICN_Cache
-Research on Cache system of ICN architecture By jonathan xu(rhapsodistic)
+By jonathan Xu(Rhapsodistic)
+
+Research on Cache system of ICN architecture 
