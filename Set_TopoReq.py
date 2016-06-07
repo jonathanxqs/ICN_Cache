@@ -20,10 +20,10 @@ fileZipf="Zipf_list.txt"
 fp = open(fileHandlerGraph,"w+")  
 
 
-topoNodeMaxn = 150     # 150
-requestMaxn = 500000    # 200000
+topoNodeMaxn = 1        # 150
+requestMaxn = 100000    # 200000
 fileMaxn = 3000       # 3000
-mBA = 3               # 150 -> 3
+mBA = 1               # 150 -> 3
 
 
 nodeVec=[]
@@ -61,11 +61,14 @@ while i < topoNodeMaxn + 1:
 
 
 
-G = nx.random_graphs.barabasi_albert_graph(topoNodeMaxn,mBA)   #generally 200,4
+#G = nx.random_graphs.barabasi_albert_graph(topoNodeMaxn,mBA)   #generally 200,4  BA
+G= nx.random_graphs.random_regular_graph(1,2) 
+#G= nx.Graph()
+#G.add_node(1)
+
 
 #print(G.degree(0))                                 
-#print(G.degree())                                     
-
+print(G.degree())                                
 print(nx.degree_histogram(G))    
 
 # spring layout
@@ -156,12 +159,14 @@ def zipfOp():
     sumZipf[0]=s2[0]
     for i in range(1,fileMaxn):
         sumZipf[i] = sumZipf[i-1] + s2[i]
-    print(sumZipf)
+    #print(sumZipf)
 
 
     for i in range(requestMaxn):
-        j= random.randint(0,n-1)
-        k= random.randint(0,n-1)
+        #j= random.randint(0,n-1)
+        #k= random.randint(0,n-1)
+        j=0
+        k=1
         while k==j:
             k = random.randint(0,n-1)
 

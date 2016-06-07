@@ -22,13 +22,15 @@ nodeIpDict=dict()
 fileHandlerGraph="Topology_Graph.txt"
 fileHandleName="Tencent_req_data1.txt"
 
-replaceAlg=cache_replace.LRU  #LRU,LFU
-replaceCacheSize = 12     # >= 1
+replaceAlg=cache_replace.ARC  #LRU,LFU
+replaceCacheSize = 10    # >= 1
 placeAlg='LCE'
 p = 0.2          # Prob
 
 N_max=202
 reqN=0
+time1 = 0
+
 linkStatus=[[0 for i in range(N_max)] for j in range(N_max)]
 
 
@@ -305,8 +307,8 @@ def reqExe(reqFileName,node_source,node_dest,placeAlg,**kargs):
 #request import all
 def reqImport(fileHandle1,placeAlg):
 
-    global nodeAlgVec,reqN
-    
+    global nodeAlgVec,reqN,time1
+    time1 = time.time()
 
     with open(fileHandle1, 'r') as f:
         for line in f.readlines():
@@ -346,6 +348,7 @@ def statPrint():
     #            hitTimesTotal += nodeAlgVec[i].hitcount
     #            checkTimesTotal += nodeAlgVec[i].count
 
+
     print("Hit times Total  =",hitTimesTotal)
     print("ReqTimesTotal  =", reqN)
     print("Hit Ratio=",hitTimesTotal/reqN)
@@ -358,6 +361,7 @@ def statPrint():
             pass
         print("Hit times in the level",i,"is :",hitTimeVec[i]," ratio:",hitTimeVec[i]/reqN)
 
+    print("Total time speed (seconds)=",time.time()-time1)
     print("The average length of get:",sumLength1 / reqN)
     print("Stat End Successfully!")
         
