@@ -20,10 +20,10 @@ fileZipf="Zipf_list.txt"
 fp = open(fileHandlerGraph,"w+")  
 
 
-topoNodeMaxn = 1        # 150
+topoNodeMaxn = 500        # 150
 requestMaxn = 100000    # 200000
-fileMaxn = 3000       # 3000
-mBA = 1               # 150 -> 3
+fileMaxn = 10000       # 3000 ->10000
+mBA = 4             # 150 -> 3   500-4
 
 
 nodeVec=[]
@@ -61,8 +61,8 @@ while i < topoNodeMaxn + 1:
 
 
 
-#G = nx.random_graphs.barabasi_albert_graph(topoNodeMaxn,mBA)   #generally 200,4  BA
-G= nx.random_graphs.random_regular_graph(1,2) 
+G = nx.random_graphs.barabasi_albert_graph(topoNodeMaxn,mBA)   #generally 200,4  BA
+#G= nx.random_graphs.random_regular_graph(1,2)   # line 2-1,single node
 #G= nx.Graph()
 #G.add_node(1)
 
@@ -196,6 +196,7 @@ def numRandlize():
 
 #randOp()
 zipfOp()
+
 #zipfWrite()
     
 
